@@ -1,0 +1,124 @@
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <h1>
+        Invoice Information
+      </h1>
+      <ol class="breadcrumb">
+        <li><a href="/"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="#">Invoice Information</a></li>
+      </ol>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="row">
+          <br/>
+          <br/>
+        <div class="col-md-1"> </div>
+        <div class="col-md-10">
+          <div class="box">
+            <div class="box-header">
+            </div>
+            <!-- /.box-header -->
+            <br/>
+            <br/>
+            <form id="invoice_edit_form" class="form-horizontal" action="/{{get_market_index}}/invoice/register_edit/" method="POST">
+              <div class="box-body">
+                <div class="form-group">
+                  <label for="VendorCode" class="col-sm-3 control-label">VendorCode</label>
+                  <div class="col-sm-7">
+                    <select name="VendorCode" class="form-control">
+                        {{range $i, $elm :=.VendorCodes}}
+                            <option value="{{$elm.ID}}" {{if $.Invoice}}{{if eq $elm.ID $.Invoice.VendorCodeID}} selected {{end}}{{end}}>{{$elm.Name}}</option>
+                        {{end}}
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="InvoiceNo" class="col-sm-3 control-label">InvoiceNo</label>
+                  <div class="col-sm-7">
+                    <select name="InvoiceNo" class="form-control">
+                        {{range $i, $elm :=.InvoiceNos}}
+                            <option value="{{$elm.ID}}" {{if $.Invoice}}{{if eq $elm.ID $.Invoice.NumberInvoiceID}} selected {{end}}{{end}}>{{$elm.Name}}</option>
+                        {{end}}
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="InvoiceDate" class="col-sm-3 control-label">InvoiceDate</label>
+                  <div class="col-sm-7">
+                    <select name="InvoiceDate" class="form-control">
+                        {{range $i, $elm :=.InvoiceDates}}
+                            <option value="{{$elm.ID}}" {{if $.Invoice}}{{if eq $elm.ID $.Invoice.DateInvoiceID}} selected {{end}}{{end}}>{{$elm.Name}}</option>
+                        {{end}}
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="InvoiceAmount" class="col-sm-3 control-label">InvoiceAmount</label>
+                  <div class="col-sm-7">
+                    <select name="InvoiceAmount" class="form-control">
+                        {{range $i, $elm :=.InvoiceAmounts}}
+                            <option value="{{$elm.ID}}" {{if $.Invoice}}{{if eq $elm.ID $.Invoice.AmountInvoiceID}} selected {{end}}{{end}}>{{$elm.Name}}</option>
+                        {{end}}
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="InvoiceStatus" class="col-sm-3 control-label">InvoiceStatus</label>
+                  <div class="col-sm-7">
+                    <select name="InvoiceStatus" class="form-control">
+                        {{range $i, $elm :=.InvoiceStatus}}
+                            <option value="{{$elm.ID}}" {{if $.Invoice}}{{if eq $elm.ID $.Invoice.StatusInvoiceID}} selected {{end}}{{end}}>{{$elm.Name}}</option>
+                        {{end}}
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="EstPayDate" class="col-sm-3 control-label">EstPayDate</label>
+                  <div class="col-sm-7">
+                    <select name="EstPayDate" class="form-control">
+                        {{range $i, $elm :=.EstPayDates}}
+                            <option value="{{$elm.ID}}" {{if $.Invoice}}{{if eq $elm.ID $.Invoice.DatePayID}} selected {{end}}{{end}}>{{$elm.Name}}</option>
+                        {{end}}
+                    </select>
+                  </div>
+                </div>
+              <input type="hidden" class="form-control" name="id" value="{{if .Invoice}}{{.Invoice.ID}}{{else}}0{{end}}"/>
+              <div class="box-footer">
+                <div class="col-sm-offset-3 col-sm-7" data-toggle="modal" data-target="#modal-edit">
+                    <button type="button" class="btn btn-info">Save</button>
+                </div>
+              </div>
+            </form>
+
+            <br/>
+            <br/>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+        </div>
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+
+        <div class="modal modal-info fade" id="modal-edit">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Are you correct the information?</h4>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-outline" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-outline" id="invoice_edit_submit" data-dismiss="modal">Ok</button>
+              </div>
+            </div>
+            <!-- /.modal-content -->
+          </div>
+          <!-- /.modal-dialog -->
+        </div>
+        <!-- /.modal -->
+
+    </section>

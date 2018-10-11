@@ -1,0 +1,58 @@
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <h1>
+        Supplier Tables
+      </h1>
+      <ol class="breadcrumb">
+        <li><a href="/"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="#">Supplier Tables</a></li>
+      </ol>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+      <br/>
+      <br/>
+      <div class="row">
+        <div class="col-md-1"> </div>
+        <div class="col-md-10">
+          <div class="box">
+            <div class="box-header">
+            </div>
+            <div class="box-body">
+              <br>
+              <table id="supply_data_table" class="table table-bordered table-striped" style="table-layout:fixed;">
+                <thead>
+                <tr>
+                  <th>VendorCode</th>
+                  <th>Supplier</th>
+                  <th>Email</th>
+                  <th>URL</th>
+                  <th>AuthorizationCode</th>
+                  <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                {{range $i, $elm :=.Supplies}}
+                <tr>
+                  <td>{{$elm.VendorCode.Name}}</td>
+                  <td>{{$elm.Supplier.Name}}</td>
+                  <td>{{$elm.SupplierEmail.Name}}</td>
+                  <td style="word-wrap:break-word;">{{$elm.AuthCode}}</td>
+                  <td style="word-wrap:break-word;">{{$elm.URL}}</td>
+                  <td>
+                    <button type="button" class="btn btn-info fa fa-edit" onclick="javascript:goEditFunction('/{{get_market_index}}/supplier/edit/{{$elm.ID}}')"></button>
+                  </td>
+                </tr>
+                {{end}}
+                </tfoot>
+              </table>
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+        </div>
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+    </section>

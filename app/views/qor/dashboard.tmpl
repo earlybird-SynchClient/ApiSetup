@@ -1,0 +1,19 @@
+<div class="qor-page__body">
+{{render "shared/flashes"}}
+{{render "shared/errors"}}
+
+    <div class="qor-section introduction">
+        <h3>This is the Rest API App for SIGMA</h3>
+        WebSite: <a href="/" target="_blank">Mapping API</a><br/>
+    </div>
+
+    <div class="qor-section qor-section__table qor-theme-slideout">
+        <div class="qor-section__header">
+            <h4 class="qor-section-title">{{t "Available Markets"}}</h4>
+        </div>
+        <div class="qor-section__body qor-table-container">
+            {{render_market_list .}}
+        </div>
+  </div>
+
+</div>
