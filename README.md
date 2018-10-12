@@ -2,6 +2,11 @@
 
 
 #### Setup
+Install postgresql
+```
+After install, should modify postgresql timezone.
+```
+
 Install fresh
 ```
 go get github.com/pilu/fresh
@@ -31,32 +36,3 @@ On new imports or just for fun - https://golang.github.io/dep/docs/daily-dep.htm
 dep ensure
 ```
 
-
-### Running tests
-Run tests on any api update or just for fun:
-```
-make build
-make test
-```
-
-
-### Kill Dockers
-```
-docker rm -f $(docker ps -a -q)
-```
-
-
-### Deployment
-Make a new merge request into master and merge.
-
-
-#### API Doc
-Install Swagger
-```
-go get github.com/yvasiyarov/swagger
-```
-
-Generate doc
-```
-swagger -apiPackage="github.com/store" -mainApiFile=main.go -output=./API.md -format=markdown
-```
